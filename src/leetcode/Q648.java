@@ -8,7 +8,7 @@ public class Q648 {
         String result = "";
         for (String i: dictionary) {
             for (int j = 0; j < str.length; j++) {
-                if (str[j].startsWith(i) && i.length() < str[j].length()) {
+                if (str[j].startsWith(i)) {
                     str[j] = i;
                 }
             }
