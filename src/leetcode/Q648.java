@@ -1,4 +1,4 @@
-package leetcode.Interview150;
+package leetcode;
 
 import java.util.List;
 
