@@ -1,22 +1,30 @@
 package leetcode.Interview150;
 
-import java.util.Arrays;
-///////////////////////////////////////////haven't accepted!!!!!!!!!!!!!!!!!!
+import java.util.ArrayList;
+
 public class Q189RotateArray {
-    public static void main(String[] args) {
-        int[] nums = {1,2,3,4,5,6,7};
-        int k = 3;
-        rotate(nums, k);
-        System.out.println(Arrays.toString(nums));
-    }
     public static void rotate(int[] nums, int k) {
-        for (int i = 0; i < k; i++) {
-            int hold = nums[nums.length - 1];
-            int l;
-            for (l = nums.length - 2; l >= 0; l--) {
-                nums[l + 1] = nums[l];
-            }
-            nums[l + 1] = hold;
+        ArrayList<Integer> number = new ArrayList<>();
+        while (k > nums.length) {
+            k -= nums.length;
+        }
+        for (int i = nums.length - k; i <= nums.length - 1; i++) {
+            number.add(nums[i]);
+        }
+        for (int i = 0; i < nums.length - k; i++) {
+            number.add(nums[i]);
+        }
+        for (int i = 0; i < number.size(); i++) {
+            nums[i] = number.get(i);
         }
     }
 }
+/*
+ * like [1,7]  k=5
+ * first loop will throw exception
+ * 
+ * until 4th iteration, it remains the same
+ * so iterate one time is enough
+ * use while loop with k > nums.length
+ * k minus nums.length until smaller than nums.length
+ */
