@@ -10,19 +10,28 @@ public class Q238ProductOfArrayExceptItself {
     }
     public static int[] productExceptSelf(int[] nums) {
         int[] arr = new int[nums.length];
-        int[] result = new int[nums.length];
+        int hold = 1;
         for (int i = 0; i < nums.length; i++) {
-            arr = nums.clone();
-            arr[i] = 1;
-            result[i] = calculate(arr, arr.length - 1);
+            if (i == 0) {
+                arr[i] = hold;
+            }
+            else {
+                hold *= nums[i - 1];
+                arr[i] = hold;
+            }
         }
-        return result;
+        hold = 1;
+        for (int i = nums.length - 1; i >= 0; i--) {
+            if (i == nums.length - 1) {
+                arr[i] *= hold;
+            }
+            else {
+                hold *= nums[i + 1];
+                arr[i] *= hold;
+            }
+        }
+        return arr;
     }
 
-    public static int calculate(int[] nums, int index) {
-        if (index < 0) {
-            return 1;
-        }
-        return nums[index] * calculate(nums, index - 1);
-    }
+    
 }
