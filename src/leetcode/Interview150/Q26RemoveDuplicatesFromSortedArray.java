@@ -2,7 +2,7 @@ package leetcode.Interview150;
 
 import java.util.ArrayList;
 
-public class Q26 {
+public class Q26RemoveDuplicatesFromSortedArray {
     public int removeDuplicates(int[] nums) {
         int index = 0;
         ArrayList<Integer> visited = new ArrayList<>();

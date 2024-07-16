@@ -1,6 +1,6 @@
 package leetcode.Interview150;
 
-public class Q151 {
+public class Q151ReverseWordInAString {
     public String reverseWords(String s) {
         String result = "";
         String[] str = s.split(" ");// if "  " two space, it gives "","","", three empty strings

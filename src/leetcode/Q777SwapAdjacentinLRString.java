@@ -4,17 +4,12 @@
  */
 package leetcode;
 
-import java.util.Scanner;
 
 /**
  *
  * @author User
  */
-public class Q777 {
-    
-}
-
-class Solution {
+class Q777SwapAdjacentinLRString {
     public static boolean canTransform(String start, String end) {
         if (!start.equals(end)) {
             for (int i = 0; i < start.length() - 1; i++) {

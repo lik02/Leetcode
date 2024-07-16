@@ -2,7 +2,7 @@ package leetcode;
 
 import java.util.Arrays;
 
-public class Q322 {
+public class Q322CoinChange {
     public static void main(String[] args) {
         int[] coins = {186,419,83,408};
         int amount = 6249;

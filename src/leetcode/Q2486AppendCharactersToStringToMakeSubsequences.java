@@ -1,6 +1,6 @@
 package leetcode;
 
-public class Q2486 {
+public class Q2486AppendCharactersToStringToMakeSubsequences {
     // public static int appendCharacters(String s, String t) {
     //     return appendCharacters(s, t, t.length());
     // }

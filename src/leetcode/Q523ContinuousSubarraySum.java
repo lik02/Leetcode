@@ -1,6 +1,6 @@
 package leetcode;
 
-class Solution {
+class Q523ContinuousSubarraySum {
     public boolean checkSubarraySum(int[] nums, int k) {// correct but exceed time limit
         int  result = 0;
         for (int i = 0; i < nums.length; i++) {

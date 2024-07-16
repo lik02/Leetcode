@@ -7,7 +7,7 @@ package leetcode.Interview150;
  */
 
 // @lc code=start
-class Solution {
+class Q58LengthOfLastWord {
     public int lengthOfLastWord(String s) {
         String[] str = s.split(" ");
         for (int i = str.length - 1; i >= 0; i--) {

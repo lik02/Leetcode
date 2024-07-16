@@ -2,7 +2,7 @@ package leetcode;
 
 import java.util.List;
 
-public class Q648 {
+public class Q648ReplaceWords {
     public String replaceWords(List<String> dictionary, String sentence) {
         String[] str = sentence.split(" ");
         String result = "";

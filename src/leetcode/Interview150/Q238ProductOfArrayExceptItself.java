@@ -1,13 +1,6 @@
 package leetcode.Interview150;
 
 public class Q238ProductOfArrayExceptItself {
-    public static void main(String[] args) {
-        int[] nums = {1,2,3,4};
-        int[] arr = productExceptSelf(nums);
-        for (int i: arr) {
-            System.out.println(i);
-        }
-    }
     public static int[] productExceptSelf(int[] nums) {
         int[] arr = new int[nums.length];
         int hold = 1;
@@ -32,6 +25,4 @@ public class Q238ProductOfArrayExceptItself {
         }
         return arr;
     }
-
-    
 }

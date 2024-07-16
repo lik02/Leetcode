@@ -2,7 +2,7 @@ package leetcode;
 
 import java.util.ArrayList;
 
-public class Q409 {
+public class Q409LongestPalindrome {
     // idea: the odd palindrome has one different character in the middle, the rest is symmetrical
     //       the even palindrome is symmetrical
     public static int longestPalindrome(String s) {

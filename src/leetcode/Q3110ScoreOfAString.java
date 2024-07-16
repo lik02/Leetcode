@@ -1,6 +1,6 @@
 package leetcode;
 
-public class Q3110 {
+public class Q3110ScoreOfAString {
     public int scoreOfString(String s) {
         int result = 0;
         for (int i = 0; i < s.length() - 1; i ++) {

@@ -1,6 +1,6 @@
 package leetcode.Interview150;
 
-public class Q27 {
+public class Q27RemoveElement {
     public int removeElement(int[] nums, int val) {
         int result = 0;
         for (int i = nums.length - 1; i > 0; i--) {

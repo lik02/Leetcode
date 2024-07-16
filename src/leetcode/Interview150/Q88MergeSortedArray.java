@@ -1,8 +1,6 @@
 package leetcode.Interview150;
 
-import java.util.Arrays;
-
-public class Q88 {
+public class Q88MergeSortedArray {
     public void merge(int[] nums1, int m, int[] nums2, int n) {
         int cnt1 = 0;
         int cnt2 = 0;
