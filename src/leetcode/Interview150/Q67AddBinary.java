@@ -1,23 +1,38 @@
 package leetcode.Interview150;
 
 public class Q67AddBinary {
-    public static void main(String[] args) {
-        System.out.println(addBinary("11", "1"));
-    }
-    public static String addBinary(String a, String b) {
-        int num1 = 0;
-        int num2 = 0;
-        Long hold1 = Long.valueOf(a);
-        Long hold2 = Long.valueOf(b);
-        for (int i = 0; i < a.length(); i++) {
-            num1 += hold1 % 10 * Math.pow(2, i);
-            hold1 /= 10;
+    public String addBinary(String a, String b) {
+        String str1 = "";
+        String str2 = "";
+        if (a.length() < b.length()) {// b + a
+            str1 = a;
+            str2 = b;
         }
-        for (int i = 0; i < b.length(); i++) {
-            num2 += hold2 % 10 * Math.pow(2, i);
-            hold2 /= 10;
+        else {// a + b
+            str1 = b;
+            str2 = a;
         }
-        num1 += num2;
-        return Integer.toBinaryString(num1);
+        for (int i = str1.length() - 1, j = str2.length() - 1; i >= 0; i--, j--) {
+            if (str1.substring(i, i + 1).equals("0")) {// skip 0;
+                continue;
+            }
+            if (str2.substring(j, j + 1).equals("0")) {
+                str2 = str2.substring(0, j) + "1" + str2.substring(j + 1);
+            }
+            else {
+                int k = j;
+                for (; k >= 0 && str2.substring(k, k + 1).equals("1"); k--) {
+                    str2 = str2.substring(0, k) + "0" + str2.substring(k + 1);
+                }
+                if (k < 0) {
+                    str2 = "1" + str2;
+                    j++;// to cater case like 11 + 1 = 100; the index will skip one digit if no j++;
+                }
+                else {
+                    str2 = str2.substring(0, k) + "1" + str2.substring(k + 1);
+                }
+            }
+        }
+        return str2;
     }
 }
