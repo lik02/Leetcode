@@ -16,19 +16,26 @@ package leetcode.Interview150;
  * }
  */
 
-public class Q100SameTree {
-    public boolean isSameTree(TreeNode p, TreeNode q) {
-        return preorder(p).equals(preorder(q));
-    }
-    public String preorder(TreeNode node) {// case use DFS (preorder)
-        String str = "";
-        if (node == null) {
-            return "null ";
+public class Q112PathSum {
+    public boolean hasPathSum(TreeNode root, int targetSum) {
+        boolean res = false;
+        if (root == null) {// to cater case like a root.left has node but root.right is null
+            return res;
         }
-        str += node.val + " ";
-        str += preorder(node.left);
-        str += preorder(node.right);
-        return str;
+        if (root.left == null && root.right == null) {
+            if (targetSum - root.val == 0) {
+                res = true;
+                return res;
+            }
+            else {
+                return res;
+            }
+        }
+        res = hasPathSum(root.left, targetSum - root.val);
+        if (!res) {
+            res = hasPathSum(root.right, targetSum - root.val);
+        }
+        return res;
     }
 }
 

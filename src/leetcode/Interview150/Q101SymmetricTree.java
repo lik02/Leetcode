@@ -16,18 +16,28 @@ package leetcode.Interview150;
  * }
  */
 
-public class Q100SameTree {
-    public boolean isSameTree(TreeNode p, TreeNode q) {
-        return preorder(p).equals(preorder(q));
+public class Q101SymmetricTree {
+    public boolean isSymmetric(TreeNode root) {
+        return traverseLeft(root.left).equals(traverseRight(root.right));
     }
-    public String preorder(TreeNode node) {// case use DFS (preorder)
+    public String traverseLeft(TreeNode root) {
         String str = "";
-        if (node == null) {
+        if (root == null) {
             return "null ";
         }
-        str += node.val + " ";
-        str += preorder(node.left);
-        str += preorder(node.right);
+        str += root.val + " ";
+        str += traverseLeft(root.left);
+        str += traverseLeft(root.right);
+        return str;
+    }
+    public String traverseRight(TreeNode root) {
+        String str = "";
+        if (root == null) {
+            return "null ";
+        }
+        str += root.val + " ";
+        str += traverseRight(root.right);
+        str += traverseRight(root.left);
         return str;
     }
 }

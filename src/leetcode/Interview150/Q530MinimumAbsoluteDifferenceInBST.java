@@ -16,19 +16,20 @@ package leetcode.Interview150;
  * }
  */
 
-public class Q100SameTree {
-    public boolean isSameTree(TreeNode p, TreeNode q) {
-        return preorder(p).equals(preorder(q));
-    }
-    public String preorder(TreeNode node) {// case use DFS (preorder)
-        String str = "";
-        if (node == null) {
-            return "null ";
+public class Q530MinimumAbsoluteDifferenceInBST {
+    int minDifference = Integer.MAX_VALUE;
+    TreeNode prev = null;
+    public int getMinimumDifference(TreeNode root) {
+        if (root == null) {
+            return minDifference;
         }
-        str += node.val + " ";
-        str += preorder(node.left);
-        str += preorder(node.right);
-        return str;
+        getMinimumDifference(root.left);
+        if (prev != null) {
+            minDifference = Math.min(minDifference, root.val - prev.val);
+        }
+        prev = root;
+        getMinimumDifference(root.right);
+        return minDifference;
     }
 }
 

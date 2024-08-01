@@ -3,16 +3,12 @@ package leetcode.Interview150;
 public class Q190ReverseBits {
     // you need treat n as an unsigned value
     public int reverseBits(int n) {
-        // int res = 0;
-        // int pow = 0;
-        // String str = String.valueOf(n);
-        // for (int i = 0; i < str.length() - 1; i++) {
-        //     if (str.substring(i, i + 1).equals("-")) {
-        //         continue;
-        //     }
-        //     res += Math.pow(Integer.valueOf(str.substring(i, i + 1)), pow);
-        //     pow++;
-        // }
-        // return res;
+        int res = 0;
+        for (int i = 0; i < 32; i++) {
+            res <<= 1;
+            res = res | (n & 1);// res |= (n & 1)
+            n >>= 1;
+        }
+        return res;
     }
 }

@@ -16,19 +16,17 @@ package leetcode.Interview150;
  * }
  */
 
-public class Q100SameTree {
-    public boolean isSameTree(TreeNode p, TreeNode q) {
-        return preorder(p).equals(preorder(q));
-    }
-    public String preorder(TreeNode node) {// case use DFS (preorder)
-        String str = "";
-        if (node == null) {
-            return "null ";
+public class Q226InvertBinaryTree {
+    public TreeNode invertTree(TreeNode root) {
+        if (root == null) {
+            return null;
         }
-        str += node.val + " ";
-        str += preorder(node.left);
-        str += preorder(node.right);
-        return str;
+        TreeNode temp = root.left;
+        root.left = root.right;
+        root.right = temp;
+        invertTree(root.left);
+        invertTree(root.right);
+        return root;
     }
 }
 
