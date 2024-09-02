@@ -1,36 +1,37 @@
 package leetcode.Interview150;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 
 public class Q56MergeIntervals {
-    public static void main(String[] args) {
-        int[][] nums = {{1,3},{2,6},{8,10},{15,18}};
-        nums = merge(nums);
-        for (int i = 0; i < nums.length; i++) {
-            for (int j = 0; j < nums[i].length; j++) {
-                System.out.print(nums[i][j] + " ");
-            }
-            System.out.println();
-        }
-    }
-    public static int[][] merge(int[][] intervals) {
-        ArrayList<Integer> list = new ArrayList<>();
+    public int[][] merge(int[][] intervals) {
         int[][] res = null;
         int index = 0;
-        list.add(intervals[0][0]);
-        list.add(intervals[0][1]);
-        for (int i = 1; i < intervals.length; i++) {
-            for (int j = 0; j < intervals[i].length; j++) {
-                list.add(intervals[i][j]);
+        ArrayList<Integer> list = new ArrayList<>();
+        Arrays.sort(intervals, Comparator.comparingInt(i -> i[0]));// sort arrays based on the first element
+        int start = intervals[0][0];
+        int end = intervals[0][1];
+        for (int i = 1; i <= intervals.length; i++) {
+            if (i != intervals.length) {
+                if (intervals[i][0] <= end && intervals[i][0] >= start) {
+                    end = Math.max(end, intervals[i][1]);
+                }
+                else {
+                    list.add(start);
+                    list.add(end);
+                    start = intervals[i][0];
+                    end = intervals[i][1];
+                }
             }
-            if (list.get(list.size() - 3) >= list.get(list.size() - 2) && list.get(list.size() - 3) <= list.get(list.size() - 1)) {
-                list.remove(list.size() - 2);
-                list.remove(list.size() - 2);
+            else {
+                list.add(start);
+                list.add(end);
             }
         }
         res = new int[list.size() / 2][2];
         for (int i = 0; i < res.length; i++) {
-            for (int j = 0; j < res[i].length; j++) {
+            for (int j = 0; j < 2; j++) {
                 res[i][j] = list.get(index);
                 index++;
             }
