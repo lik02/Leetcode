@@ -57,41 +57,23 @@ public class Q399EvaluateDivision {
     public static double[] calcEquation(List<List<String>> equations, double[] values, List<List<String>> queries) {
         double[] ans = new double[queries.size()];
         for (int i = 0; i < equations.size(); i++) {
-            for (int j = 0; j < equations.get(i).size(); j++) {
-                if (j == 0) {
-                    String current1 = equations.get(i).get(j);
-                    String current2 = equations.get(i).get(j + 1);
-                    if (!map.containsKey(current1)) {
-                        map.put(current1, new Node(current1));
-                    }
-                    if (!map.containsKey(current2)) {
-                        map.put(current2, new Node(current2));
-                    }
-                    map.get(current1).neighbors.add(map.get(current2));
-                    map.get(current1).values.put(map.get(current2), values[i]);
-                }
-                else {
-                    String current1 = equations.get(i).get(j - 1);
-                    String current2 = equations.get(i).get(j);
-                    if (!map.containsKey(current1)) {
-                        map.put(current1, new Node(current1));
-                    }
-                    if (!map.containsKey(current2)) {
-                        map.put(current2, new Node(current2));
-                    }
-                    map.get(current2).neighbors.add(map.get(current1));
-                    map.get(current2).values.put(map.get(current1), 1 / values[i]);
-                }
-            }
+            String current1 = equations.get(i).get(0);
+            String current2 = equations.get(i).get(1);
+            map.putIfAbsent(current1, new Node(current1));
+            map.putIfAbsent(current2, new Node(current2));
+            map.get(current1).neighbors.add(map.get(current2));
+            map.get(current1).values.put(map.get(current2), values[i]);
+            map.get(current2).neighbors.add(map.get(current1));
+            map.get(current2).values.put(map.get(current1), 1 / values[i]);
         }
 
         for (int i = 0; i < queries.size(); i++) {
-           if (!map.containsKey(queries.get(i).get(0)) || !map.containsKey(queries.get(i).get(1))) {
+           if (!map.containsKey(queries.get(i).get(0)) || !map.containsKey(queries.get(i).get(1))) {// elements don't exist
                 ans[i] = -1;
                 continue;
             }
             dfs(map.get(queries.get(i).get(0)), map.get(queries.get(i).get(1)), i, ans, new HashSet<>());
-            if (ans[i] == 0) {
+            if (ans[i] == 0) {//like case a-b c-d, find a-c
                 ans[i] = -1;
             }
         }
@@ -113,7 +95,7 @@ public class Q399EvaluateDivision {
                 return true;
             }
         }
-        return false;
+        return false;// avoid like a-b b-c c-d and we want to find b-d, when we loop b.neighbors we will get a first and after the a's loop it will return true and give wrong ans
     }
 }
 
