@@ -1,3 +1,5 @@
+package leetcode.Interview150;
+
 import java.util.HashMap;
 
 public class Q211DesignAddAndSearchWordsDataStructure {
